@@ -1,0 +1,50 @@
+
+body{
+    background-color: black;
+}
+.backgroundContainer{
+    padding: 20px;
+
+}
+
+#startBtn {
+    margin-top: -825px;
+    margin-left: 655px;
+
+
+}
+
+.container{
+	margin-top: -30px;
+	text-align: center;
+	height: 100%;
+    width: 300px;
+    padding: 10px;
+    margin-right: 565px;
+    
+}
+
+h3{
+    margin: -667px;
+    
+    
+    
+}
+
+#timeLeft{
+    margin-bottom: -800px;
+    margin-right: 40px;
+	text-align: center;
+	height: 100%;
+    width: 300px;
+    padding: 10px;
+    margin-left: 364px;
+    
+}
+
+#currentQuestion{
+    text-align: center;
+    font-size: 15px;
+    padding: 50px;
+    padding-bottom: 0px;
+}
