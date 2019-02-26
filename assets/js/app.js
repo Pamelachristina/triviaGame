@@ -54,7 +54,7 @@ var triviaQuestions = [{
     answer: 1
 }];
 
-var currentQuestion; var correctAnswer; var incorrectAnswer; var unanswered; var seconds; var time; var answered; var userSelect;
+var currentQuestion; var correctAnswer; var incorrectAnswer; var unanswered; var seconds; var time; var answered; var userSelect; var answerList;
 
 var messages = {
 	correct: "Yes, that is correct!",
@@ -68,7 +68,15 @@ var messages = {
 //Start Button Event
 $('#startBtn').on('click', function(){
 	$(this).hide();
-	newGame();
+    newGame();
+    countdown();
+	//clicking an answer will pause the time and setup answerPage
+	$('.thisChoice').on('click',function(){
+		userSelect = $(this).data('index');
+		clearInterval(time);
+		answerPage();
+    });
+    
 });
 
 //Start Over Button Event
@@ -121,6 +129,7 @@ function newQuestion(){
         answered = true;
         //sets timer to go down
         time = setInterval(showCountdown, 1000);
+        
     }
     
     function showCountdown(){
