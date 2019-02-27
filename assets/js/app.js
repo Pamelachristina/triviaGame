@@ -54,7 +54,17 @@ var triviaQuestions = [{
     answer: 1
 }];
 
-var currentQuestion; var correctAnswer; var incorrectAnswer; var unanswered; var seconds; var time; var answered; var userSelect; var answerList;
+
+var currentQuestion; 
+var correctAnswer; 
+var incorrectAnswer; 
+var unanswered; 
+var seconds; 
+var time; 
+var answered; 
+var userSelect; 
+var answerList;
+
 
 var messages = {
 	correct: "Yes, that is correct!",
@@ -63,29 +73,6 @@ var messages = {
     finished: "Let's see how well you did..."
 }
 
-
-
-//Start Button Event
-$('#startBtn').on('click', function(){
-	$(this).hide();
-    newGame();
-    countdown();
-	//clicking an answer will pause the time and setup answerPage
-	$('.thisChoice').on('click',function(){
-		userSelect = $(this).data('index');
-		clearInterval(time);
-		answerPage();
-    });
-    
-});
-
-//Start Over Button Event
-$('#startOverBtn').on('click', function(){
-	$(this).hide();
-	newGame();
-});
-
-// New Game
 function newGame(){
 	$('#finalMessage').empty();
 	$('#correctAnswers').empty();
@@ -98,63 +85,102 @@ function newGame(){
 	newQuestion();
 }
 
+
+//Start Button Event
+$('#startBtn').on('click', function(){
+	$(this).hide();
+    newGame();
+    countdown();
+    
+});
+
+//Start Over Button Event
+$('#startOverBtn').on('click', function(){
+	$(this).hide();
+	newGame();
+});
+
+function countdown(){
+    seconds = 20;
+    $('#timeLeft').html('<h3>Time Remaining: ' + seconds + '</h3>');
+    answered = true;
+
+    //sets timer to go down
+    time = setInterval(showCountdown, 1000);
+    
+}
+
+function showCountdown(){
+    seconds--;
+    $('#timeLeft').html('<h3>Time Remaining: ' + seconds + '</h3>');
+    if(seconds < 1){
+        // clearInterval(time);
+        seconds=20;
+        answered = false;
+        currentQuestion++;
+        answerPage();
+        newQuestion();
+    }
+}
+
 function newQuestion(){
 	$('#message').empty();
 	$('#correctedAnswer').empty();
 	$('#gif').empty();
-    answered = true;
-    
-    //sets up new questions & answerList
+	answered = true;
+	
+	//sets up new questions & answerList
 	$('#currentQuestion').html('Question #'+(currentQuestion+1)+'/'+triviaQuestions.length);
-	$('.question').html('<h4>' + triviaQuestions[currentQuestion].question + '</h4>');
+	$('.question').html('<h2>' + triviaQuestions[currentQuestion].question + '</h2>');
 	for(var i = 0; i < 4; i++){
 		var choices = $('<div>');
 		choices.text(triviaQuestions[currentQuestion].answerList[i]);
 		choices.attr({'data-index': i });
 		choices.addClass('thisChoice');
 		$('.answerList').append(choices);
-    }}
-    
-    countdown();
-	//clicking an answer will pause the time and setup answerPage
-	$('.thisChoice').on('click',function(){
+	}}
+
+function answerPage(){
+    $('#currentQuestion').empty();
+    $('.thisChoice').empty(); //Clears question page
+    $('.question').empty();
+
+}
+
+
+    //clicking an answer will pause the time and setup answerPage
+    $('.thisChoice').on('click',function(){
 		userSelect = $(this).data('index');
 		clearInterval(time);
-		answerPage();
-    });
+        answerPage();
     
-    function countdown(){
-        seconds = 20;
-        $('#timeLeft').html('<h3>Time Remaining: ' + seconds + '</h3>');
-        answered = true;
-        //sets timer to go down
-        time = setInterval(showCountdown, 1000);
+    },
+
+
+
+         //checks to see correct, incorrect, or unanswered
+        function scoreboard(){
+        $('#timeLeft').empty();
+        $('#message').empty();
+        $('#correctedAnswer').empty();
+        $('#gif').empty();
+        $('#finalMessage').html(messages.finished);
+        $('#correctAnswers').html("Correct Answers: " + correctAnswer);
+        $('#incorrectAnswers').html("Incorrect Answers: " + incorrectAnswer);
+        $('#unanswered').html("Unanswered: " + unanswered);
+        $('#startOverBtn').addClass('reset');
+        $('#startOverBtn').show();
+        $('#startOverBtn').html('Start Over?');
         
-    }
-    
-    function showCountdown(){
-        seconds--;
-        $('#timeLeft').html('<h3>Time Remaining: ' + seconds + '</h3>');
-        if(seconds < 1){
-            // clearInterval(time);
-            seconds=20;
-            answered = false;
-            currentQuestion++;
-            answerPage();
-            newQuestion();
-        }
-    }
+     },
+        
 
-    function answerPage(){
-        $('#currentQuestion').empty();
-        $('.thisChoice').empty(); //Clears question page
-        $('.question').empty();
-    }
 
+
+function rightAnswers() {
     var rightAnswerText = triviaQuestions[currentQuestion].answerList[triviaQuestions[currentQuestion].answer];
-	var rightAnswerIndex = triviaQuestions[currentQuestion].answer;
+    var rightAnswerIndex = triviaQuestions[currentQuestion].answer;
     
-    //checks to see correct, incorrect, or unanswered
 	if((userSelect == rightAnswerIndex) && (answered == true)){
 		correctAnswer++;
 		$('#message').html(messages.correct);
@@ -174,20 +200,20 @@ function newQuestion(){
 	} else{
 		currentQuestion++;
 		setTimeout(newQuestion, 5000);
-	}	
-    function scoreboard(){
-        $('#timeLeft').empty();
-        $('#message').empty();
-        $('#correctedAnswer').empty();
-        $('#gif').empty();
+    }})
+
+ 
     
-        $('#finalMessage').html(messages.finished);
-        $('#correctAnswers').html("Correct Answers: " + correctAnswer);
-        $('#incorrectAnswers').html("Incorrect Answers: " + incorrectAnswer);
-        $('#unanswered').html("Unanswered: " + unanswered);
-        $('#startOverBtn').addClass('reset');
-        $('#startOverBtn').show();
-        $('#startOverBtn').html('Start Over?');
-    }
+    
+
 
     
+    
+    
+   
+
+    
+
+   
+
+   
