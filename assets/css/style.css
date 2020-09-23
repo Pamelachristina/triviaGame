@@ -1,66 +1,110 @@
-
-body{
-    background-color: black;
+h/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+	html,
+body {
+	height: 100%;
 }
-.backgroundContainer{
-    padding: 20px;
 
+body {
+	text-align: center;
+	background-image: url("../images/Art-room-triva-game.gif");
+	background-size: cover;
+	height: 100%;
+	overflow: hidden;
 }
 
 #startBtn {
-    margin-top: -825px;
-    margin-left: 655px;
-
-
+	margin-top: 300px;
+	margin-left: 320px;
 }
 
-.btnbtnlight:hover, .reset:hover{
+.answer-button:hover,
+.reset:hover {
 	background-color: #202364;
 }
 
-
-.thisChoice:hover{
+.answer-button:hover {
 	background-color: #202364;
 	color: white;
-	
 }
 
-
-.container{
-	margin-top: -30px;
+.answer-button {
+	background-color: #202364;
+	color: white;
+	display: block;
 	text-align: center;
-	height: 100%;
-    width: 300px;
-    padding: 10px;
-    margin-right: 565px;
-    
+	position: relative;
+	left: 100px;
 }
 
-h3{
-    margin: -667px;
-    font-size: 20px;
-    
-    
-    
-}
-h2{
-    font-size: 18px;
-}
-
-#timeLeft{
-    margin-bottom: -800px;
-    margin-right: 40px;
+#quiz-area {
+	position: absolute;
+	left: 540px;
+	top: 220px;
 	text-align: center;
-	height: 100%;
-    width: 300px;
-    padding: 10px;
-    margin-left: 364px;
-    
 }
 
-#currentQuestion{
-    text-align: center;
-    font-size: 15px;
-    padding: 50px;
-    padding-bottom: 0px;
+.flex-container {
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-ms-flex-pack: justify;
+	justify-content: space-between;
+	height: 600px;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+}
+
+#questionSec {
+	text-align: center;
+	line-height: 21px;
+	font-size: 17px;
+	margin-top: auto;
+}
+
+#imageSec {
+	width: 400px;
+	height: 400px;
+}
+
+img {
+	position: absolute;
+	left: 400px;
+	top: 20px;
+	text-align: center;
+	z-index: -99;
+}
+
+h3 {
+	font-size: 17px;
+	width: 320px;
+	padding: 15px;
+	z-index: 1;
+}
+
+h2 {
+	font-size: 20px;
+	width: 320px;
+	padding: 15px;
+	z-index: 1;
+}
+
+#timeLeft {
+	margin-top: 355px;
+	text-align: center;
+	width: 25%;
+	padding-right: 215px;
+}
+
+#currentQuestion {
+	text-align: center;
+	font-size: 15px;
+	padding-top: 325px;
+	padding-bottom: 0px;
 }

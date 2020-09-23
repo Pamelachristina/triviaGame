@@ -5,38 +5,60 @@
 	<title>Art Room Trivia</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link href="assets/css/style.css" rel="stylesheet">
+	
+
+	
 </head>
 <body>
 
-    <div class="backgroundContainer">
-        <img src="assets/images/Art-room-triva-game.gif" alt="Art Room" height="1000px">
-        <button class = 'btn btn-light' id = 'startBtn'>Start</button>
+   
+	<div class='flex-container'>
+		<button class = 'btn btn-light' id = 'startBtn'>Start</button>
 
-	<div class = "container">
+			<div id='#sub-wrapper'>
+				
+
+				<div id="quiz-area">
+					
+
+				<!-- Question images -->
+					<div id='imageSec'></div>
+
+					<!-- Question page --> 
+					<div id='questionSec'>
+						<div id = 'currentQuestion'></div> 
+						<div class = 'question'></div>
+						<div class = 'answerList'></div>
+					</div>
+					<div id ='timeLeft'>
+
+					<!-- Answer Page -->
+					<div id='answerSec'>
+						<div id ='message'></div>
+						<div id ='correctedAnswer'></div>
+						<div id ='image'></div>
+					</div>
+
+					<!-- Scoreboard -->
+					<div id='scoreBoard'>
+						<div id ='finalMessage'></div>
+						<div id ='correctAnswers'></div>
+						<div id ='incorrectAnswers'></div>
+						<div id ='unanswered'></div>
+						<div id = 'startOverBtn'></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+        
+
 		
-		
-			<!-- Question page -->
-			<div id = timeLeft></div> 
-			<div id = currentQuestion></div> 
-			<div class = 'question'></div>
-			<div class = 'answerList'></div>
-		
-			<!-- Answer Page -->
-			<div id = message></div>
-			<div id = correctedAnswer></div>
-			<div id = gif></div>
-		
-			<!-- Scoreboard -->
-			<div id = finalMessage></div>
-			<div id = correctAnswers></div>
-			<div id = incorrectAnswers></div>
-			<div id = unanswered></div>
-			<div id = 'startOverBtn'></div>
-    </div>
-</div>
+
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script type = "text/javascript" src="assets/js/app.js"></script>
+	<script type = "text/javascript" src="assets/js/appv2.js"></script>
 
 
 </body>

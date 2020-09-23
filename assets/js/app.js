@@ -7,52 +7,66 @@
    7. At the end of the game, there will be a results display that shows correct answers, incorrect answers, and unanswered questions. There will also be a restart button.
    */
 
-
 // Trivia question bank 
 
 var triviaQuestions = [{
     question: "In 2017, this American Artist from Brooklyn, NY once known for his graffiti art sold a painting at Sotheby’s auction for $110 million dollars. The highest amount for any American artist ever." ,
     answerList: ["Jean-Michel Basquiat", "Andy Warhol", "Claude Monet", "Rembrandt"],
-    answer: 0
+    answer: 0,
+    image: "assets/images/basquiat.jpg"
 },{
     question: "Who painted the Mona Lisa?",
     answerList: ["Vincent VanGogh", "Leonado DaVinci", "Frida Kahlo", "Diego Rivera"],
-    answer: 1
+    answer: 1,
+    image: "assets/images/monalisa.jpg"
     
 },{
     question: "This American painter was a commanding figure of the Abstract Expressionist movement. Best known for his drip and splash style where he poured and dripped paint from a can onto the canvas.",
     answerList: ["Paul Cezanne","Pablo Picasso", "Piet Mondrian", "Jackson Pollack" ],
-    answer: 3
+    answer: 3,
+    image: "assets/images/jpollack.jpg"
 },{
     question: "Who painted the Sistine chapel ceiling?",
     answerList: ["Henri Matisse", "Paul Klee", "Michelangelo", "Gustav Klimt"],
-    answer: 2
+    answer: 2,
+    image: "assets/images/sistine.png"
     
 },{
     question: "A term used to describe the various materials and methods of the artist.",
     answerList: ["artsy things", "medium", "art tools", "tint tool"], 
-    answer: 1
+    answer: 1,
+    image: "assets/images/thinkinghomer.png"
 },{
     question: "Originated by Picasso and Braque this movement in painting and sculpture was recognized as one of the great turning points in western art. African sculpture heavily influenced this movement.",
     answerList: ["Cubism", "Pointillism", "Realism", "Surrealism"],
-    answer: 0
+    answer: 0,
+    image: "assets/images/cubism.jpg"
 },{
     question: "Best known for his Pop Art silk-screened images of celebrities, this American artist started his career in NYC as a Fashion Illustrator.",
     answerList: ["Joesph Wright", "Andrew Wyeth", "Andy Warhol", "Franl Lloyd Wright"],
-    answer: 2
+    answer: 2,
+    image: "assets/images/orangeprince.jpg"
 },{
     question:"A form of art usually portraiture, in which features of the subject represented are distorted or exaggerated for comic effect.",
     answerList: ["Caricature", "Portrait", "Sculpture", "Cubism"],
-    answer: 0
+    answer: 0,
+    image: "assets/images/thinkinghomer.png"
+
 },{
     question: "Refers to the distances or areas around, between, and within components of a piece of art.",
     answerList: ["Line", "Form", "Space", "Shape"],
-    answer: 2
+    answer: 2,
+    image: "assets/images/thinkinghomer.png"
 },{
     question: "Girl with Balloon, a well known artwork by this London based artist self destructs by passing through a shredder installed in the bottom of the frame shortly after being sold at auction.",
     answerList: ["Georgia O'Keefe", "Banksy", "Joan Miro", "Kandinsky"],
-    answer: 1
+    answer: 1,
+    image: "assets/images/girlwithballoon.jpg"
 }];
+
+
+// Variable to hold our setInterval
+var timer;
 
 
 var currentQuestion; 
@@ -64,6 +78,9 @@ var time;
 var answered; 
 var userSelect; 
 var answerList;
+var question;
+var answer;
+var image;
 
 
 var messages = {
@@ -101,7 +118,7 @@ $('#startOverBtn').on('click', function(){
 });
 
 function countdown(){
-    seconds = 20;
+    seconds = 0;
     $('#timeLeft').html('<h3>Time Remaining: ' + seconds + '</h3>');
     answered = true;
 
@@ -126,18 +143,20 @@ function showCountdown(){
 function newQuestion(){
 	$('#message').empty();
 	$('#correctedAnswer').empty();
-	$('#gif').empty();
+	$('#image').empty();
 	answered = true;
 	
 	//sets up new questions & answerList
 	$('#currentQuestion').html('Question #'+(currentQuestion+1)+'/'+triviaQuestions.length);
-	$('.question').html('<h2>' + triviaQuestions[currentQuestion].question + '</h2>');
+	$('.question').html('<h2>' + triviaQuestions[currentQuestion].question +'</h2>');
 	for(var i = 0; i < 4; i++){
 		var choices = $('<div>');
 		choices.text(triviaQuestions[currentQuestion].answerList[i]);
 		choices.attr({'data-index': i });
 		choices.addClass('thisChoice');
-		$('.answerList').append(choices);
+        $('.answerList').append(choices);
+        $('#imageSec').append("<img src='" + triviaQuestions[this.currentQuestion].image + "' />");
+
 	}}
 
 function answerPage(){
@@ -163,7 +182,7 @@ function answerPage(){
         $('#timeLeft').empty();
         $('#message').empty();
         $('#correctedAnswer').empty();
-        $('#gif').empty();
+        $('#image').empty();
         $('#finalMessage').html(messages.finished);
         $('#correctAnswers').html("Correct Answers: " + correctAnswer);
         $('#incorrectAnswers').html("Incorrect Answers: " + incorrectAnswer);
@@ -173,9 +192,10 @@ function answerPage(){
         $('#startOverBtn').html('Start Over?');
         
      },
+
+     
+
         
-
-
 
 function rightAnswers() {
     var rightAnswerText = triviaQuestions[currentQuestion].answerList[triviaQuestions[currentQuestion].answer];
