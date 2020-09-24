@@ -15,18 +15,18 @@ var questions = [{
     question: "In 2017, this American Artist from Brooklyn, NY once known for his graffiti art sold a painting at Sotheby’s auction for $110 million dollars. The highest amount for any American artist ever." ,
     answers: ["Jean-Michel Basquiat", "Andy Warhol", "Claude Monet", "Rembrandt"],
     correctAnswer: "Jean-Michel Basquiat",
-    image: "assets/images/basquiat.jpg"
+    image: "assets/images/basquiat.gif"
 },{
     question: "Who painted the Mona Lisa?",
     answers: ["Vincent VanGogh", "Leonado DaVinci", "Frida Kahlo", "Diego Rivera"],
     correctAnswer: "Leonado DaVinci",
-    image: "assets/images/monalisa.jpg"
+    image: "assets/images/monalisa.gif"
     
 },{
     question: "This American painter was a commanding figure of the Abstract Expressionist movement. Best known for his drip and splash style where he poured and dripped paint from a can onto the canvas.",
     answers: ["Paul Cezanne","Pablo Picasso", "Piet Mondrian", "Jackson Pollack" ],
     correctAnswer: "Jackson Pollack",
-    image: "assets/images/jpollack.jpg"
+    image: "assets/images/pollack.gif"
 },{
     question: "Who painted the Sistine chapel ceiling?",
     answers: ["Henri Matisse", "Paul Klee", "Michelangelo", "Gustav Klimt"],
@@ -37,7 +37,7 @@ var questions = [{
     question: "A term used to describe the various materials and methods of the artist.",
     answers: ["artsy things", "medium", "art tools", "tint tool"], 
     correctAnswer: "medium",
-    image: "assets/images/thinkinghomer.png"
+    image: "assets/images/artschool.gif"
 },{
     question: "Originated by Picasso and Braque this movement in painting and sculpture was recognized as one of the great turning points in western art. African sculpture heavily influenced this movement.",
     answers: ["Cubism", "Pointillism", "Realism", "Surrealism"],
@@ -47,7 +47,7 @@ var questions = [{
     question: "Best known for his Pop Art silk-screened images of celebrities, this American artist started his career in NYC as a Fashion Illustrator.",
     answers: ["Joesph Wright", "Andrew Wyeth", "Andy Warhol", "Franl Lloyd Wright"],
     correctAnswer: "Andy Warhol",
-    image: "assets/images/orangeprince.jpg"
+    image: "assets/images/andy.gif"
 },{
     question:"A form of art usually portraiture, in which features of the subject represented are distorted or exaggerated for comic effect.",
     answers: ["Caricature", "Portrait", "Sculpture", "Cubism"],
@@ -57,7 +57,7 @@ var questions = [{
     question: "Refers to the distances or areas around, between, and within components of a piece of art.",
     answers: ["Line", "Form", "Space", "Shape"],
     correctAnswer: "Space",
-    image: "assets/images/thinkinghomer.png"
+    image: "assets/images/GIPHY-Arts-logo.gif"
 },{
     question: "Girl with Balloon, a well known artwork by this London based artist self destructs by passing through a shredder installed in the bottom of the frame shortly after being sold at auction.",
     answers: ["Georgia O'Keefe", "Banksy", "Joan Miro", "Kandinsky"],
@@ -135,7 +135,7 @@ var game = {
 
     clearInterval(timer);
 
-    card.html("<h2>All done, heres how you did!</h2>");
+    card.html("<h2>All done! Here's how you did:</h2>");
 
     $("#timeleft").text(game.counter);
 
